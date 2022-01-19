@@ -1,0 +1,17 @@
+*{
+    padding:0;
+    margin:0;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+}
+
+#container {
+    margin: auto;
+    width: 700px;
+    height: 700px;
+    display: flex;
+    border: 1px solid black;
+}

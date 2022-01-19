@@ -1,0 +1,39 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Great number game</title>
+</head>
+<body>
+    <div id="container"  style="width: 700px; margin:auto; text-align: center;">
+        <h1>Welcome to the great number game!</h1>
+        <p>I am thinking of a number between 1 and 100</p>
+        <p>Take a guess!</p>
+        {% if 'guess' in session: %}
+            {% if session['guess'] == session['random_number'] %}
+                <div class="card bg-success" style="width: 250px; margin: auto;">
+                    <h3>{{session['guess']}} was the number!</h3>
+                </div>
+                <a class="btn btn-primary" href="/reset" style="width: 250px; margin: auto;">Play again!</a>
+            {% elif session['guess'] > session['random_number'] %}
+            <div class="card bg-danger" style="width: 250px; margin: auto;" >
+                <h3>Too High!</h3>
+            </div>
+            {% else %}
+            <div class="card bg-danger" style="width: 250px; margin: auto;">
+                <h3>Too Low!</h3>
+                </div>
+            {% endif %}
+        {% endif %}
+        <div class="form_class">
+            <form action="/checker" method="post">
+                <input type="text" name="guess">
+                <input type="submit" value="guess">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
